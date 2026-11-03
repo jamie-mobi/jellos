@@ -25,7 +25,7 @@ jobs:
 
       - name: Build and test JellyKit
         if: hashFiles('Packages/JellyKit/Package.swift') != ''
-        run: swift test --package-path Packages/JellyKit
+        run: xcrun swift test --package-path Packages/JellyKit
 
       - name: No package yet
         if: hashFiles('Packages/JellyKit/Package.swift') == ''
