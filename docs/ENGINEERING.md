@@ -33,8 +33,19 @@ jellyOS runs on iOS, iPadOS, macOS and tvOS.
 Note: `docs/spec/13-jellyos-decisions.md` section 1 lists iOS, iPadOS and tvOS.
 macOS was added on 2026-11-03. This document is the current platform list.
 
-Toolchain floor: Swift 6.2, Xcode 26, iOS 18, iPadOS 18, macOS 15, tvOS 18.
-The floor comes from `docs/templates/README.md` ("Toolchain floor").
+Toolchain and targets:
+
+| Setting | Value |
+| --- | --- |
+| Xcode | 26 |
+| Swift compiler | 6.2 (ships with Xcode 26) |
+| Swift language mode | Swift 6 (`swift-tools-version: 6.2` in the package; `SWIFT_VERSION = 6.0` in Xcode targets) |
+| Strict concurrency | Complete. Swift 6 language mode turns it on. Xcode targets also set `SWIFT_STRICT_CONCURRENCY = complete` |
+| Deployment target | 26 on all platforms: iOS 26, iPadOS 26, macOS 26, tvOS 26 |
+
+Do not lower a deployment target. Do not turn off strict concurrency for a
+module or a file. `@preconcurrency` and `nonisolated(unsafe)` need an entry in
+section 8 with the reason.
 
 ---
 
@@ -230,7 +241,32 @@ xcodebuild test -scheme jellyOS \
    Each `xcodebuild test` call against a UI test target must have at least one
    `-only-testing:` argument.
 
-### 4.4 Previews
+### 4.4 Continuous integration
+
+GitHub Actions runs on each pull request and each push to `main`, on
+`macos-26`. There is no fastlane.
+
+| Workflow | File | Runs |
+| --- | --- | --- |
+| Lint | `.github/workflows/lint.yml` | `swiftformat . --lint --config .swiftformat` and `swiftlint lint --strict --config .swiftlint.yml` |
+| Build and Test | `.github/workflows/build.yml` | `swift test --package-path Packages/JellyKit`, then `xcodebuild build-for-testing` for `jellyOS` (iOS Simulator, macOS) and `tvJelly` (tvOS Simulator) in `jellyOS.xcodeproj`, with `CODE_SIGNING_ALLOWED=NO` |
+
+Rules:
+
+1. CI compiles the UI test targets but never runs them. Run the UI tests you
+   wrote or changed on your machine (section 4.3).
+2. A step skips with a notice while its package or project does not exist.
+   When you create `Packages/JellyKit` or `jellyOS.xcodeproj`, keep those
+   paths, or change the workflow in the same commit.
+3. Linters skip `docs/`, so the templates are not linted.
+4. Run both linters before you push:
+
+```sh
+swiftformat . --lint --config .swiftformat
+swiftlint lint --strict --config .swiftlint.yml
+```
+
+### 4.5 Previews
 
 Every view has a `#Preview` inside `#if DEBUG`, with the empty, long-text and
 no-image variants (template rule 22). Previews use `JellyMocks`.

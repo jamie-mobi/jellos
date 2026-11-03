@@ -14,8 +14,8 @@ change every template that calls it.
 
 | Needs | For |
 | --- | --- |
-| Swift 6.2+ | `@concurrent` on the shared `send`, `throws(E)` typed throws, `#expect(throws:)` |
-| OS 18+ (iOS, tvOS, macOS 15) | `Mutex` in the test stub `URLProtocol` |
+| Swift 6.2+, Swift 6 language mode, complete strict concurrency | `@concurrent` on the shared `send`, `throws(E)` typed throws, `#expect(throws:)` |
+| OS 26 (iOS, iPadOS, macOS, tvOS) | The deployment target for every platform. Covers `Mutex` in the test stub `URLProtocol` |
 | tvOS or macOS | `.onMoveCommand` in the screen template and the move-direction mapping. Drop both on iOS |
 
 ## Which template to copy

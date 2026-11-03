@@ -60,7 +60,7 @@ step.
     the transport.
 12. **The stub `URLProtocol` is the one lock in the test target.**
     `URLProtocol`'s entry points are synchronous class methods, so an actor
-    is impossible there. `Mutex` (OS 18+) guards a registry keyed by a
+    is impossible there. `Mutex` guards a registry keyed by a
     per-test marker header, which is what lets the suite run in parallel.
     Every other double is an actor.
 

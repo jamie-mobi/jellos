@@ -1,0 +1,28 @@
+name: Lint
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: SwiftFormat and SwiftLint
+    if: github.event.pull_request.draft != true
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tools
+        run: brew bundle --file Brewfile
+
+      - name: SwiftFormat
+        run: swiftformat . --lint --config .swiftformat
+
+      - name: SwiftLint
+        run: swiftlint lint --strict --config .swiftlint.yml

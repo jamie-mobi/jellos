@@ -1,0 +1,67 @@
+name: Build and Test
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  package:
+    name: JellyKit unit tests
+    if: github.event.pull_request.draft != true
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+
+      - name: Build and test JellyKit
+        if: hashFiles('Packages/JellyKit/Package.swift') != ''
+        run: swift test --package-path Packages/JellyKit
+
+      - name: No package yet
+        if: hashFiles('Packages/JellyKit/Package.swift') == ''
+        run: echo "::notice::Packages/JellyKit/Package.swift does not exist yet. Skipped."
+
+  apps:
+    name: Build ${{ matrix.scheme }} (${{ matrix.platform }})
+    if: github.event.pull_request.draft != true
+    runs-on: macos-26
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - scheme: jellyOS
+            platform: iOS
+            destination: generic/platform=iOS Simulator
+          - scheme: jellyOS
+            platform: macOS
+            destination: generic/platform=macOS
+          - scheme: tvJelly
+            platform: tvOS
+            destination: generic/platform=tvOS Simulator
+    steps:
+      - uses: actions/checkout@v4
+
+      # UI tests are compiled here, never run. See docs/ENGINEERING.md section 4.3.
+      - name: Build app and tests
+        if: hashFiles('jellyOS.xcodeproj/project.pbxproj') != ''
+        run: |
+          set -o pipefail
+          xcodebuild build-for-testing \
+            -project jellyOS.xcodeproj \
+            -scheme "${{ matrix.scheme }}" \
+            -destination "${{ matrix.destination }}" \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: No project yet
+        if: hashFiles('jellyOS.xcodeproj/project.pbxproj') == ''
+        run: echo "::notice::jellyOS.xcodeproj does not exist yet. Skipped."

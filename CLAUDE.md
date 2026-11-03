@@ -64,6 +64,15 @@ xcodebuild test -scheme jellyOS \
 - tvOS has its own Presentation module: `JellyPresentationTV`.
 - Module map and import rules: `docs/ENGINEERING.md` section 2.
 
+### Build
+
+- Xcode 26, Swift 6 language mode, complete strict concurrency.
+- Deployment target 26 on all platforms: iOS, iPadOS, macOS, tvOS.
+- No fastlane. CI is `.github/workflows/lint.yml` and
+  `.github/workflows/build.yml` (`docs/ENGINEERING.md` section 4.4).
+- Run `swiftformat . --lint --config .swiftformat` and
+  `swiftlint lint --strict --config .swiftlint.yml` before you push.
+
 ### Sources
 
 - `docs/openapi.json` is the full Jellyfin API (12.2.0). It is 1.8 MB. Search

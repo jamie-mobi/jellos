@@ -1,4 +1,4 @@
---swiftversion 6.4
+--swiftversion 6.2
 
 --assetliterals visual-width
 --computedvarattrs prev-line
@@ -54,8 +54,7 @@
     trailingCommas,         \
     yodaConditions
 
---exclude Shared/Strings/Strings.swift, \
-    fastlane/,				\
-	build/
+--exclude build/, \
+    docs/, \
+    **/.build/
 
---header "\nSwiftfin is subject to the terms of the Mozilla Public\nLicense, v2.0. If a copy of the MPL was not distributed with this\nfile, you can obtain one at https://mozilla.org/MPL/2.0/.\n\nCopyright (c) {year} Jellyfin & Jellyfin Contributors\n"
