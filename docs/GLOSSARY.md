@@ -28,3 +28,12 @@ One name per thing. UI text, code comments, docs, and errors use these words onl
 | Backdrop | The full-width image behind a detail page or the Home hero | background, fanart |
 | Cast & Crew | The people on an item: actors, directors, writers | people, credits |
 | More Like This | Items similar to the open item | recommended, similar |
+| Featured | The large item at the top of Home, one of up to 10 pages | hero, banner, spotlight (in UI text) |
+| See All | The full grid opened from a shelf header chevron | view all, more |
+| Collection | A Jellyfin BoxSet: a named set of items, for example a film series | bundle, playlist (and not a Library) |
+| Genre | A genre name from the server, for example Comedy | category |
+| Top Rated | The 10 items with the highest community rating, shown with ranks | top 10, chart |
+| For You | Items picked from what the user played | recommended, suggestions |
+| Trailers | Local or remote trailers of an item | previews |
+| Extras | An item's special features: behind the scenes, featurettes | bonus content, specials |
+| Added this week | Caption on an item added in the last 7 days | new, just added |

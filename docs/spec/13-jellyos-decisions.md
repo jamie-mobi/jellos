@@ -12,7 +12,7 @@ Decisions were made on 2026-11-03.
 
 | Decision | Detail |
 |---|---|
-| Platforms | Apple only (iOS, iPadOS, tvOS). |
+| Platforms | Apple only (iOS, iPadOS, macOS, tvOS). macOS was added on 2026-11-03. iOS, iPadOS and macOS share one Presentation module; tvOS has its own. See `docs/ENGINEERING.md`. |
 | Player | AVPlayer only for v1; no other player engine. Read only the AVPlayer parts of [06-vlc.md](06-vlc.md). |
 | Chromecast | Not in v1. |
 | Dead code | Ignored. Items marked dead in [12-gaps.md](12-gaps.md) section 3 are not rebuilt. |
