@@ -111,3 +111,8 @@ XcodeConfig/DevelopmentTeam.xcconfig
 # Clone reference screenshots (not for public repos)
 docs/screens/*.png
 docs/apple-tv-tab/screens/*.png
+
+# Local server credentials (never commit)
+.env
+.env.*
+!.env.example

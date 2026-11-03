@@ -187,7 +187,8 @@ Then clean up. Repeat for each acceptance item.
 - Swift Testing only. Follow `docs/templates/unittests/README.md`.
 - Each non-view module has a test target: `JellyDomainTests`,
   `JellyDataTests`, `JellyServicesTests`, `JellyPlaybackTests`,
-  `JellyCompositionTests`.
+  `JellyCompositionTests`. Live server tests are in `JellyIntegrationTests`
+  (section 4.5).
 - Unit tests are fast. You may run all of them:
 
 ```sh
@@ -266,7 +267,38 @@ swiftformat . --lint --config .swiftformat
 swiftlint lint --strict --config .swiftlint.yml
 ```
 
-### 4.5 Previews
+### 4.5 Live server tests
+
+A local `.env` file (not committed) holds the server to test against:
+
+| Key | Holds |
+| --- | --- |
+| `jellyfin_host` | The server address, for example `https://jellyfin.example.com` |
+| `jellyfin_api` | A Jellyfin API key |
+
+`.env.example` shows the shape. `.gitignore` ignores `.env`.
+
+Rules:
+
+1. Never commit `.env`, and never copy its values into code, tests,
+   fixtures, `Info.plist`, schemes, logs, issues, PRs or commit messages.
+2. A Jellyfin API key has admin rights on the server. Use it only in tests
+   and local debug runs. The app itself signs in as a user (S-003).
+3. Live server tests live in the `JellyIntegrationTests` test target. Each
+   suite reads the two keys from the process environment and is disabled
+   when either is missing:
+   `@Suite("...", .enabled(if: LiveServer.isConfigured))`.
+4. Unit tests and UI tests never call the live server. They use stubs and
+   fixtures.
+5. CI does not have the key, so the live suites skip there.
+6. Run the live tests by hand:
+
+```sh
+set -a; source .env; set +a
+swift test --package-path Packages/JellyKit --filter JellyIntegrationTests
+```
+
+### 4.6 Previews
 
 Every view has a `#Preview` inside `#if DEBUG`, with the empty, long-text and
 no-image variants (template rule 22). Previews use `JellyMocks`.

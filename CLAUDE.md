@@ -73,6 +73,13 @@ xcodebuild test -scheme jellyOS \
 - Run `swiftformat . --lint --config .swiftformat` and
   `swiftlint lint --strict --config .swiftlint.yml` before you push.
 
+### Secrets
+
+- `.env` holds `jellyfin_host` and `jellyfin_api` for live server tests. It is
+  git-ignored. Never commit it, print it, or copy its values anywhere.
+- The API key has admin rights. Use it only in `JellyIntegrationTests` and
+  local debug runs (`docs/ENGINEERING.md` section 4.5).
+
 ### Sources
 
 - `docs/openapi.json` is the full Jellyfin API (12.2.0). It is 1.8 MB. Search
