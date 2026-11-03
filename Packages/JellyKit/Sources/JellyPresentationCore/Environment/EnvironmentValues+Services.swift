@@ -24,4 +24,6 @@ public extension EnvironmentValues {
     var userPickerService: UserPickerService = defaultGraph.userPickerService
     @Entry
     var signInService: SignInService = defaultGraph.signInService
+    @Entry
+    var sidebarService: SidebarService = defaultGraph.sidebarService
 }

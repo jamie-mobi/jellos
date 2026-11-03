@@ -29,6 +29,12 @@ enum APICatalogue {
             .appending(queryItems: [URLQueryItem(name: "tag", value: tag), URLQueryItem(name: "maxWidth", value: "240")])
     }
 
+    static func userViews(server: URL, userID: String) -> URL {
+        server
+            .appending(path: "UserViews")
+            .appending(queryItems: [URLQueryItem(name: "userId", value: userID)])
+    }
+
     // MARK: - Headers
 
     static func headers(identity: ClientIdentity, token: String?, extra: [String: String]) -> [String: String] {

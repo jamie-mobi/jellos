@@ -27,6 +27,7 @@ struct JellyOSApp: App {
         }
         .commands {
             AddServerCommands()
+            LibraryCommands()
         }
     }
 
