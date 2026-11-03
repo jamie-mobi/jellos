@@ -72,6 +72,13 @@ public enum AccessibilityID {
         }
     }
 
+    // MARK: - Player
+
+    public enum Player {
+        public static let view = "player.view"
+        public static let close = "player.close"
+    }
+
     // MARK: - tvOS root
 
     public enum TVRoot {

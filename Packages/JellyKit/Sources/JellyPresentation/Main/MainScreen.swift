@@ -52,6 +52,7 @@ struct MainScreen: View {
         .onChange(of: sidebar.selection) { _, item in
             selection = item
         }
+        .playerOverlay()
         .focusedSceneValue(
             \.sidebarShortcut,
             SidebarShortcutAction(libraryNames: sidebar.libraries.map(\.name)) { number in

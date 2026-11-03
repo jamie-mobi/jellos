@@ -35,6 +35,22 @@ enum APICatalogue {
             .appending(queryItems: [URLQueryItem(name: "userId", value: userID)])
     }
 
+    static func playbackInfo(server: URL, itemID: String, userID: String) -> URL {
+        server
+            .appending(path: "Items/\(itemID)/PlaybackInfo")
+            .appending(queryItems: [URLQueryItem(name: "userId", value: userID)])
+    }
+
+    static func directStream(server: URL, itemID: String, mediaSourceID: String, token: String) -> URL {
+        server
+            .appending(path: "Videos/\(itemID)/stream")
+            .appending(queryItems: [
+                URLQueryItem(name: "static", value: "true"),
+                URLQueryItem(name: "mediaSourceId", value: mediaSourceID),
+                URLQueryItem(name: "ApiKey", value: token)
+            ])
+    }
+
     // MARK: - Headers
 
     static func headers(identity: ClientIdentity, token: String?, extra: [String: String]) -> [String: String] {

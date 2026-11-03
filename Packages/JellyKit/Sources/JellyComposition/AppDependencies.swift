@@ -9,6 +9,7 @@ import Foundation
 import JellyData
 import JellyDomain
 import JellyMocks
+import JellyPlayback
 import JellyServices
 
 public enum AppDependencies {
@@ -26,6 +27,7 @@ public enum AppDependencies {
         let auth: any AuthRepositoryProtocol
         let library: any LibraryRepositoryProtocol
         let sidebarStore: any SidebarStoreProtocol
+        let playback: any PlaybackRepositoryProtocol
     }
 
     // MARK: - Graph
@@ -46,7 +48,8 @@ public enum AppDependencies {
                 serverStore: serverStore
             ),
             library: LibraryRepository(urlSession: urlSession, identity: identity),
-            sidebarStore: UserDefaultsSidebarStore(suiteName: nil)
+            sidebarStore: UserDefaultsSidebarStore(suiteName: nil),
+            playback: PlaybackRepository(urlSession: urlSession, identity: identity)
         ))
     }
 
@@ -69,7 +72,8 @@ public enum AppDependencies {
             server: MockServerRepository(behaviour: fixture.serverBehaviour, store: serverStore),
             auth: MockAuthRepository(tokenStore: tokenStore, sessionStore: sessionStore, serverStore: serverStore),
             library: MockLibraryRepository(),
-            sidebarStore: UserDefaultsSidebarStore(suiteName: UITestFixture.suiteName)
+            sidebarStore: UserDefaultsSidebarStore(suiteName: UITestFixture.suiteName),
+            playback: MockPlaybackRepository()
         ))
     }
 
@@ -112,7 +116,8 @@ public enum AppDependencies {
             sessionService: SessionService(repository: repositories.auth),
             userPickerService: UserPickerService(repository: repositories.auth),
             signInService: SignInService(repository: repositories.auth),
-            sidebarService: SidebarService(repository: repositories.library, store: repositories.sidebarStore)
+            sidebarService: SidebarService(repository: repositories.library, store: repositories.sidebarStore),
+            playbackService: PlaybackService(repository: repositories.playback)
         )
     }
 

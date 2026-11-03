@@ -6,6 +6,7 @@
 //
 
 import JellyComposition
+import JellyPlayback
 import JellyServices
 import SwiftUI
 
@@ -26,4 +27,6 @@ public extension EnvironmentValues {
     var signInService: SignInService = defaultGraph.signInService
     @Entry
     var sidebarService: SidebarService = defaultGraph.sidebarService
+    @Entry
+    var playbackService: PlaybackService = defaultGraph.playbackService
 }
