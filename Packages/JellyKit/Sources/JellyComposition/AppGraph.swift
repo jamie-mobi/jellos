@@ -16,4 +16,5 @@ public struct AppGraph: Sendable {
     public let sessionService: SessionService
     public let userPickerService: UserPickerService
     public let signInService: SignInService
+    public let sidebarService: SidebarService
 }

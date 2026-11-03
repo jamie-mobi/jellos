@@ -24,6 +24,8 @@ public enum AppDependencies {
     private struct Repositories {
         let server: any ServerRepositoryProtocol
         let auth: any AuthRepositoryProtocol
+        let library: any LibraryRepositoryProtocol
+        let sidebarStore: any SidebarStoreProtocol
     }
 
     // MARK: - Graph
@@ -42,7 +44,9 @@ public enum AppDependencies {
                 tokenStore: KeychainTokenStore(service: keychainService),
                 sessionStore: UserDefaultsSessionStore(suiteName: nil),
                 serverStore: serverStore
-            )
+            ),
+            library: LibraryRepository(urlSession: urlSession, identity: identity),
+            sidebarStore: UserDefaultsSidebarStore(suiteName: nil)
         ))
     }
 
@@ -63,7 +67,9 @@ public enum AppDependencies {
 
         return makeGraph(repositories: Repositories(
             server: MockServerRepository(behaviour: fixture.serverBehaviour, store: serverStore),
-            auth: MockAuthRepository(tokenStore: tokenStore, sessionStore: sessionStore, serverStore: serverStore)
+            auth: MockAuthRepository(tokenStore: tokenStore, sessionStore: sessionStore, serverStore: serverStore),
+            library: MockLibraryRepository(),
+            sidebarStore: UserDefaultsSidebarStore(suiteName: UITestFixture.suiteName)
         ))
     }
 
@@ -105,7 +111,8 @@ public enum AppDependencies {
             serverListService: ServerListService(repository: repositories.server),
             sessionService: SessionService(repository: repositories.auth),
             userPickerService: UserPickerService(repository: repositories.auth),
-            signInService: SignInService(repository: repositories.auth)
+            signInService: SignInService(repository: repositories.auth),
+            sidebarService: SidebarService(repository: repositories.library, store: repositories.sidebarStore)
         )
     }
 

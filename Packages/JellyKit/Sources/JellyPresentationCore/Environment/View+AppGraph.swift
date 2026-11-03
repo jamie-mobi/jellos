@@ -15,5 +15,6 @@ public extension View {
             .environment(\.sessionService, graph.sessionService)
             .environment(\.userPickerService, graph.userPickerService)
             .environment(\.signInService, graph.signInService)
+            .environment(\.sidebarService, graph.sidebarService)
     }
 }

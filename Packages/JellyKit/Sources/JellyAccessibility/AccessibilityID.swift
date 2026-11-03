@@ -56,6 +56,20 @@ public enum AccessibilityID {
 
     public enum Main {
         public static let home = "main.home"
+        public static let library = "main.library"
+        public static let favorites = "main.favorites"
+    }
+
+    // MARK: - Sidebar
+
+    public enum Sidebar {
+        public static let home = "sidebar.home"
+        public static let favorites = "sidebar.favorites"
+        public static let noLibraries = "sidebar.noLibraries"
+
+        public static func library(_ index: Int) -> String {
+            "sidebar.library.\(index)"
+        }
     }
 
     // MARK: - tvOS root
