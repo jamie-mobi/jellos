@@ -15,11 +15,26 @@ enum APICatalogue {
         server.appending(path: "System/Info/Public")
     }
 
+    static func publicUsers(server: URL) -> URL {
+        server.appending(path: "Users/Public")
+    }
+
+    static func authenticateByName(server: URL) -> URL {
+        server.appending(path: "Users/AuthenticateByName")
+    }
+
+    static func userImage(server: URL, userID: String, tag: String) -> URL {
+        server
+            .appending(path: "Users/\(userID)/Images/Primary")
+            .appending(queryItems: [URLQueryItem(name: "tag", value: tag), URLQueryItem(name: "maxWidth", value: "240")])
+    }
+
     // MARK: - Headers
 
     static func headers(identity: ClientIdentity, token: String?, extra: [String: String]) -> [String: String] {
         let base = [
             "Accept": "application/json",
+            "Content-Type": "application/json",
             "Authorization": authorization(identity: identity, token: token)
         ]
 

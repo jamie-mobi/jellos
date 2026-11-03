@@ -18,4 +18,10 @@ public extension EnvironmentValues {
     var connectService: ConnectService = defaultGraph.connectService
     @Entry
     var serverListService: ServerListService = defaultGraph.serverListService
+    @Entry
+    var sessionService: SessionService = defaultGraph.sessionService
+    @Entry
+    var userPickerService: UserPickerService = defaultGraph.userPickerService
+    @Entry
+    var signInService: SignInService = defaultGraph.signInService
 }

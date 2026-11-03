@@ -23,5 +23,12 @@ public enum PreviewServers {
         version: "10.11.0",
         address: URL(string: "https://a-very-long-host-name.example.com/jellyfin")!
     )
+
+    public static let fixture = Server(
+        id: "fixture-server",
+        name: "Fixture Server",
+        version: "10.11.0",
+        address: URL(string: "http://fixture.local:8096")!
+    )
 }
 #endif

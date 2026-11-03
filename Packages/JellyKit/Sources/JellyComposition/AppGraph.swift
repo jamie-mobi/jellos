@@ -13,4 +13,7 @@ public struct AppGraph: Sendable {
 
     public let connectService: ConnectService
     public let serverListService: ServerListService
+    public let sessionService: SessionService
+    public let userPickerService: UserPickerService
+    public let signInService: SignInService
 }

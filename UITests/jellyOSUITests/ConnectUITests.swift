@@ -81,7 +81,7 @@ final class ConnectUITests: XCTestCase {
 
         typeAddress("demo.local:8096", in: app)
         app.buttons[AccessibilityID.Connect.connectButton].tap()
-        XCTAssertTrue(app.descendants(matching: .any)[AccessibilityID.ServerList.row(0)].waitForExistence(timeout: Constants.appearTimeout))
+        XCTAssertTrue(app.staticTexts[AccessibilityID.UserPicker.title].waitForExistence(timeout: Constants.appearTimeout))
 
         app.terminate()
         let relaunched = XCUIApplication.launched(fixture: "connect-success", reset: false)

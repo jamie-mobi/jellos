@@ -9,12 +9,15 @@
 public enum UITestFixture: String, Sendable {
     case connectSuccess = "connect-success"
     case connectUnreachable = "connect-unreachable"
+    case users
+    case signedIn = "signed-in"
 
     // MARK: - Launch arguments
 
     public static let fixtureArgument = "-ui-test-fixture"
     public static let resetArgument = "-ui-test-reset"
     public static let suiteName = "mobi.jamie.jellyOS.uitests"
+    public static let keychainService = "mobi.jamie.jellyOS.uitests"
 
     // MARK: - Init
 
@@ -32,10 +35,34 @@ public enum UITestFixture: String, Sendable {
 
     public var serverBehaviour: MockServerRepository.Behaviour {
         switch self {
-        case .connectSuccess:
+        case .connectSuccess,
+             .users,
+             .signedIn:
             .answer(id: "fixture-server", name: "Fixture Server", version: "10.11.0")
         case .connectUnreachable:
             .fail(.network)
+        }
+    }
+
+    public var seedsServer: Bool {
+        switch self {
+        case .connectSuccess,
+             .connectUnreachable:
+            false
+        case .users,
+             .signedIn:
+            true
+        }
+    }
+
+    public var seedsSession: Bool {
+        switch self {
+        case .connectSuccess,
+             .connectUnreachable,
+             .users:
+            false
+        case .signedIn:
+            true
         }
     }
 }

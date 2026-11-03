@@ -17,12 +17,33 @@ public enum AppDependencies {
 
     private static let requestTimeout: TimeInterval = 20
     private static let deviceIDKey = "deviceID"
+    private static let keychainService = "mobi.jamie.jellyOS"
+
+    // MARK: - Repositories
+
+    private struct Repositories {
+        let server: any ServerRepositoryProtocol
+        let auth: any AuthRepositoryProtocol
+    }
 
     // MARK: - Graph
 
     @MainActor
     public static func makeGraph() -> AppGraph {
-        makeGraph(repository: makeServerRepository())
+        let urlSession = URLSession(configuration: makeSessionConfiguration())
+        let identity = makeClientIdentity()
+        let serverStore = UserDefaultsServerStore(suiteName: nil)
+
+        return makeGraph(repositories: Repositories(
+            server: ServerRepository(urlSession: urlSession, identity: identity, store: serverStore),
+            auth: AuthRepository(
+                urlSession: urlSession,
+                identity: identity,
+                tokenStore: KeychainTokenStore(service: keychainService),
+                sessionStore: UserDefaultsSessionStore(suiteName: nil),
+                serverStore: serverStore
+            )
+        ))
     }
 
     #if DEBUG
@@ -32,37 +53,60 @@ public enum AppDependencies {
             return makeGraph()
         }
 
+        let serverStore = UserDefaultsServerStore(suiteName: UITestFixture.suiteName)
+        let sessionStore = UserDefaultsSessionStore(suiteName: UITestFixture.suiteName)
+        let tokenStore = KeychainTokenStore(service: UITestFixture.keychainService)
+
         if arguments.contains(UITestFixture.resetArgument) {
-            UserDefaults(suiteName: UITestFixture.suiteName)?.removePersistentDomain(forName: UITestFixture.suiteName)
+            reset(fixture: fixture, serverStore: serverStore, sessionStore: sessionStore, tokenStore: tokenStore)
         }
 
-        let store = UserDefaultsServerStore(suiteName: UITestFixture.suiteName)
-        return makeGraph(repository: MockServerRepository(behaviour: fixture.serverBehaviour, store: store))
+        return makeGraph(repositories: Repositories(
+            server: MockServerRepository(behaviour: fixture.serverBehaviour, store: serverStore),
+            auth: MockAuthRepository(tokenStore: tokenStore, sessionStore: sessionStore, serverStore: serverStore)
+        ))
+    }
+
+    private static func reset(
+        fixture: UITestFixture,
+        serverStore: UserDefaultsServerStore,
+        sessionStore: UserDefaultsSessionStore,
+        tokenStore: KeychainTokenStore
+    ) {
+        UserDefaults(suiteName: UITestFixture.suiteName)?.removePersistentDomain(forName: UITestFixture.suiteName)
+        tokenStore.deleteToken(for: MockAuthRepository.alice.id)
+        tokenStore.deleteToken(for: MockAuthRepository.bob.id)
+
+        if fixture.seedsServer {
+            serverStore.save([PreviewServers.fixture])
+        }
+        if fixture.seedsSession {
+            let session = Session(server: PreviewServers.fixture, user: MockAuthRepository.alice, accessToken: "fixture-token")
+            tokenStore.setToken(session.accessToken, for: session.user.id)
+            sessionStore.save(session)
+        }
     }
     #endif
 
-    // MARK: - Private
-
-    @MainActor
-    private static func makeGraph(repository: any ServerRepositoryProtocol) -> AppGraph {
-        AppGraph(
-            connectService: ConnectService(repository: repository),
-            serverListService: ServerListService(repository: repository)
-        )
-    }
-
-    private static func makeServerRepository() -> any ServerRepositoryProtocol {
-        ServerRepository(
-            urlSession: URLSession(configuration: makeSessionConfiguration()),
-            identity: makeClientIdentity(),
-            store: UserDefaultsServerStore(suiteName: nil)
-        )
-    }
+    // MARK: - Session configuration
 
     static func makeSessionConfiguration() -> URLSessionConfiguration {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = requestTimeout
         return configuration
+    }
+
+    // MARK: - Private
+
+    @MainActor
+    private static func makeGraph(repositories: Repositories) -> AppGraph {
+        AppGraph(
+            connectService: ConnectService(repository: repositories.server),
+            serverListService: ServerListService(repository: repositories.server),
+            sessionService: SessionService(repository: repositories.auth),
+            userPickerService: UserPickerService(repository: repositories.auth),
+            signInService: SignInService(repository: repositories.auth)
+        )
     }
 
     private static func makeClientIdentity() -> ClientIdentity {
