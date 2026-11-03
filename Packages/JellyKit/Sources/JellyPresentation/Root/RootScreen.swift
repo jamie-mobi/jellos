@@ -8,6 +8,7 @@
 #if os(iOS) || os(macOS)
 import JellyDomain
 import JellyPresentationCore
+import JellyServices
 import SwiftUI
 
 public struct RootScreen: View {
@@ -16,11 +17,15 @@ public struct RootScreen: View {
 
     @Environment(\.serverListService)
     private var serverList
+    @Environment(\.sessionService)
+    private var sessionService
 
     // MARK: - State
 
     @State
     private var hasLoaded = false
+    @State
+    private var pickedServer: Server?
     @State
     private var isAddingServer = false
 
@@ -34,10 +39,11 @@ public struct RootScreen: View {
         content
             .task {
                 await serverList.reload()
+                await sessionService.restore()
                 hasLoaded = true
             }
             .sheet(isPresented: $isAddingServer) {
-                ConnectScreen(onConnected: { _ in serverAdded() }, onCancel: { isAddingServer = false })
+                ConnectScreen(onConnected: serverAdded, onCancel: { isAddingServer = false })
             }
             .focusedSceneValue(\.addServer, AddServerAction { isAddingServer = true })
     }
@@ -46,24 +52,44 @@ public struct RootScreen: View {
 
     @ViewBuilder
     private var content: some View {
-        switch RootDestinationUseCase.destination(hasLoaded: hasLoaded, serverCount: serverList.servers.count) {
+        switch RootDestinationUseCase.destination(
+            hasLoaded: hasLoaded,
+            servers: serverList.servers,
+            session: sessionService.session,
+            pickedServer: pickedServer
+        ) {
         case .loading:
             ProgressView()
+
         case .connect:
-            ConnectScreen(onConnected: { _ in serverAdded() })
+            ConnectScreen(onConnected: serverAdded)
+
         case .servers:
             NavigationStack {
-                ServerListScreen(servers: serverList.servers) {
-                    isAddingServer = true
+                ServerListScreen(
+                    servers: serverList.servers,
+                    onSelect: { pickedServer = $0 },
+                    onAddServer: { isAddingServer = true }
+                )
+            }
+
+        case let .users(server):
+            NavigationStack {
+                UserPickerScreen(server: server) {
+                    pickedServer = nil
                 }
             }
+
+        case let .main(session):
+            MainScreen(session: session)
         }
     }
 
     // MARK: - Helpers
 
-    private func serverAdded() {
+    private func serverAdded(_ server: Server) {
         isAddingServer = false
+        pickedServer = server
         Task {
             await serverList.reload()
         }

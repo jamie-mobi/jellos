@@ -9,6 +9,7 @@
 import JellyAccessibility
 import JellyDomain
 import JellyPresentationCore
+import JellyServices
 import SwiftUI
 
 struct ConnectScreen: View {

@@ -29,6 +29,35 @@ public enum AccessibilityID {
         }
     }
 
+    // MARK: - User picker
+
+    public enum UserPicker {
+        public static let title = "userPicker.title"
+        public static let otherUser = "userPicker.otherUser"
+        public static let error = "userPicker.error"
+
+        public static func user(_ index: Int) -> String {
+            "userPicker.user.\(index)"
+        }
+    }
+
+    // MARK: - Sign in
+
+    public enum SignIn {
+        public static let title = "signIn.title"
+        public static let userNameField = "signIn.userNameField"
+        public static let passwordField = "signIn.passwordField"
+        public static let signInButton = "signIn.signInButton"
+        public static let cancelButton = "signIn.cancelButton"
+        public static let error = "signIn.error"
+    }
+
+    // MARK: - Main
+
+    public enum Main {
+        public static let home = "main.home"
+    }
+
     // MARK: - tvOS root
 
     public enum TVRoot {

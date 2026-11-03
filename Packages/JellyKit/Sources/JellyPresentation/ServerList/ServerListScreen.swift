@@ -16,6 +16,7 @@ struct ServerListScreen: View {
     // MARK: - Input
 
     let servers: [Server]
+    let onSelect: (Server) -> Void
     let onAddServer: () -> Void
 
     // MARK: - View
@@ -23,8 +24,13 @@ struct ServerListScreen: View {
     var body: some View {
         List {
             ForEach(Array(servers.enumerated()), id: \.element.id) { index, server in
-                row(server)
-                    .accessibilityIdentifier(AccessibilityID.ServerList.row(index))
+                Button {
+                    onSelect(server)
+                } label: {
+                    row(server)
+                }
+                .buttonStyle(.plain)
+                .accessibilityIdentifier(AccessibilityID.ServerList.row(index))
             }
         }
         .accessibilityIdentifier(AccessibilityID.ServerList.list)
@@ -47,6 +53,8 @@ struct ServerListScreen: View {
                 .foregroundStyle(.secondary)
                 .lineLimit(1)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .contentShape(Rectangle())
         .accessibilityElement(children: .combine)
     }
 }
@@ -56,13 +64,13 @@ import JellyMocks
 
 #Preview("Servers") {
     NavigationStack {
-        ServerListScreen(servers: [PreviewServers.livingRoom, PreviewServers.longName]) {}
+        ServerListScreen(servers: [PreviewServers.livingRoom, PreviewServers.longName], onSelect: { _ in }, onAddServer: {})
     }
 }
 
 #Preview("Empty") {
     NavigationStack {
-        ServerListScreen(servers: []) {}
+        ServerListScreen(servers: [], onSelect: { _ in }, onAddServer: {})
     }
 }
 #endif
