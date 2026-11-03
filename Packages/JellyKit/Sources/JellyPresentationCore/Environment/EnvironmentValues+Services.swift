@@ -29,4 +29,6 @@ public extension EnvironmentValues {
     var sidebarService: SidebarService = defaultGraph.sidebarService
     @Entry
     var playbackService: PlaybackService = defaultGraph.playbackService
+    @Entry
+    var homeService: HomeService = defaultGraph.homeService
 }

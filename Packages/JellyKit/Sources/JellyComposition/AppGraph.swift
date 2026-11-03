@@ -19,4 +19,5 @@ public struct AppGraph: Sendable {
     public let signInService: SignInService
     public let sidebarService: SidebarService
     public let playbackService: PlaybackService
+    public let homeService: HomeService
 }

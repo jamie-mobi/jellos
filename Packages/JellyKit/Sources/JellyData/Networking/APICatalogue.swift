@@ -51,6 +51,51 @@ enum APICatalogue {
             ])
     }
 
+    static func nextUp(server: URL, userID: String) -> URL {
+        server
+            .appending(path: "Shows/NextUp")
+            .appending(queryItems: [
+                URLQueryItem(name: "userId", value: userID),
+                URLQueryItem(name: "limit", value: "10"),
+                URLQueryItem(name: "fields", value: "Overview,Genres")
+            ])
+    }
+
+    static func latest(server: URL, userID: String) -> URL {
+        server
+            .appending(path: "Items/Latest")
+            .appending(queryItems: [
+                URLQueryItem(name: "userId", value: userID),
+                URLQueryItem(name: "limit", value: "16"),
+                URLQueryItem(name: "includeItemTypes", value: "Movie,Series"),
+                URLQueryItem(name: "fields", value: "Overview,Genres")
+            ])
+    }
+
+    static func episodes(server: URL, seriesID: String, userID: String, limit: Int) -> URL {
+        server
+            .appending(path: "Shows/\(seriesID)/Episodes")
+            .appending(queryItems: [
+                URLQueryItem(name: "userId", value: userID),
+                URLQueryItem(name: "limit", value: String(limit))
+            ])
+    }
+
+    static func favoriteItem(server: URL, itemID: String, userID: String) -> URL {
+        server
+            .appending(path: "UserFavoriteItems/\(itemID)")
+            .appending(queryItems: [URLQueryItem(name: "userId", value: userID)])
+    }
+
+    static func itemImage(server: URL, itemID: String, type: String, tag: String, maxWidth: Int) -> URL {
+        server
+            .appending(path: "Items/\(itemID)/Images/\(type)")
+            .appending(queryItems: [
+                URLQueryItem(name: "tag", value: tag),
+                URLQueryItem(name: "maxWidth", value: String(maxWidth))
+            ])
+    }
+
     // MARK: - Headers
 
     static func headers(identity: ClientIdentity, token: String?, extra: [String: String]) -> [String: String] {

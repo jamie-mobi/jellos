@@ -17,5 +17,6 @@ public extension View {
             .environment(\.signInService, graph.signInService)
             .environment(\.sidebarService, graph.sidebarService)
             .environment(\.playbackService, graph.playbackService)
+            .environment(\.homeService, graph.homeService)
     }
 }
