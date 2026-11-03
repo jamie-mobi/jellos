@@ -22,27 +22,28 @@ let package = Package(
         .target(name: "JellyData", dependencies: ["JellyDomain"]),
         .target(name: "JellyServices", dependencies: ["JellyDomain", "JellyData"]),
         .target(name: "JellyPlayback", dependencies: ["JellyDomain", "JellyData"]),
-        .target(name: "JellyMocks", dependencies: ["JellyDomain", "JellyData", "JellyServices"]),
+        .target(name: "JellyMocks", dependencies: ["JellyDomain", "JellyData", "JellyServices", "JellyPlayback"]),
         .target(
             name: "JellyComposition",
             dependencies: ["JellyDomain", "JellyData", "JellyServices", "JellyPlayback", "JellyMocks"]
         ),
         .target(
             name: "JellyPresentationCore",
-            dependencies: ["JellyDomain", "JellyServices", "JellyAccessibility", "JellyComposition", "JellyMocks"]
+            dependencies: ["JellyDomain", "JellyServices", "JellyPlayback", "JellyAccessibility", "JellyComposition", "JellyMocks"]
         ),
         .target(
             name: "JellyPresentation",
-            dependencies: ["JellyDomain", "JellyServices", "JellyAccessibility", "JellyPresentationCore", "JellyMocks"],
+            dependencies: ["JellyDomain", "JellyServices", "JellyPlayback", "JellyAccessibility", "JellyPresentationCore", "JellyMocks"],
             resources: [.process("Resources")]
         ),
         .target(
             name: "JellyPresentationTV",
-            dependencies: ["JellyDomain", "JellyServices", "JellyAccessibility", "JellyPresentationCore", "JellyMocks"]
+            dependencies: ["JellyDomain", "JellyServices", "JellyPlayback", "JellyAccessibility", "JellyPresentationCore", "JellyMocks"]
         ),
         .testTarget(name: "JellyDomainTests", dependencies: ["JellyDomain"]),
         .testTarget(name: "JellyDataTests", dependencies: ["JellyDomain", "JellyData"]),
         .testTarget(name: "JellyServicesTests", dependencies: ["JellyDomain", "JellyData", "JellyServices"]),
+        .testTarget(name: "JellyPlaybackTests", dependencies: ["JellyDomain", "JellyData", "JellyPlayback"]),
         .testTarget(name: "JellyCompositionTests", dependencies: ["JellyComposition", "JellyMocks"]),
         .testTarget(name: "JellyIntegrationTests", dependencies: ["JellyDomain", "JellyData"])
     ]
