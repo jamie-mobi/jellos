@@ -56,12 +56,12 @@ All modules are targets of one Swift package at `Packages/JellyKit`.
 | `JellyData` | The shared networking stack (one `send`, URL catalogue, coder, error protocol, token provider), DTOs from `docs/openapi.json`, `*Request` builders, `*HTTPTransport`, repositories | `JellyDomain` | all |
 | `JellyServices` | `@MainActor @Observable final class *Service` types, `SingleFlightRefreshing`, the item store | `JellyDomain`, `JellyData` | all |
 | `JellyPlayback` | AVPlayer engine, `DeviceProfile`, `PlaybackInfo` resolution, progress reporting, Now Playing | `JellyDomain`, `JellyData` | all |
-| `JellyComposition` | The composition root. It builds the real object graph, or the fixture graph for UI tests | all non-view modules, `JellyMocks` | all |
+| `JellyComposition` | The composition root. It builds the real object graph, or the fixture graph for UI tests. Its public API exposes only services and domain types, never `JellyData` types. The fixture branch is inside `#if DEBUG` | all non-view modules, `JellyMocks` | all |
 | `JellyMocks` | `Mock*` doubles and fixture data for previews and UI tests. All code is inside `#if DEBUG` | `JellyDomain`, `JellyData`, `JellyServices` | all |
 | `JellyAccessibility` | The `AccessibilityID` constants. UI tests import this module too | none | all |
-| `JellyPresentationCore` | SwiftUI glue that both Presentation modules use and that is not a screen: `@Entry` environment keys, `ViewModifier`s, design tokens (`AppSpacing` and the token enums), image loading helpers | `JellyServices`, `JellyDomain`, `JellyAccessibility` | all |
-| `JellyPresentation` | Screens and views for iOS, iPadOS and macOS | `JellyPresentationCore`, `JellyServices`, `JellyDomain`, `JellyAccessibility` | iOS, iPadOS, macOS |
-| `JellyPresentationTV` | Screens and views for tvOS | `JellyPresentationCore`, `JellyServices`, `JellyDomain`, `JellyAccessibility` | tvOS |
+| `JellyPresentationCore` | SwiftUI glue that both Presentation modules use and that is not a screen: `@Entry` environment keys, `ViewModifier`s, design tokens (`AppSpacing` and the token enums), image loading helpers | `JellyServices`, `JellyDomain`, `JellyAccessibility`, `JellyComposition` (for `@Entry` defaults), `JellyMocks` (previews only) | all |
+| `JellyPresentation` | Screens and views for iOS, iPadOS and macOS | `JellyPresentationCore`, `JellyServices`, `JellyDomain`, `JellyAccessibility`, `JellyMocks` (previews only) | iOS, iPadOS, macOS |
+| `JellyPresentationTV` | Screens and views for tvOS | `JellyPresentationCore`, `JellyServices`, `JellyDomain`, `JellyAccessibility`, `JellyMocks` (previews only) | tvOS |
 
 App targets:
 
@@ -72,28 +72,48 @@ App targets:
 
 ### 2.3 Dependency direction
 
-```
-JellyDomain  <-  JellyData  <-  JellyServices  <-  JellyPresentationCore  <-  JellyPresentation
-                     ^               ^                                    <-  JellyPresentationTV
-                     |               |
-                 JellyPlayback   JellyMocks
-                     ^               ^
-                     +---- JellyComposition ----+
-```
+Each module may import only the modules in its "Imports" column in section
+2.2. In order, from the bottom:
+
+1. `JellyDomain`, `JellyAccessibility`
+2. `JellyData`
+3. `JellyServices`, `JellyPlayback`
+4. `JellyMocks`
+5. `JellyComposition`
+6. `JellyPresentationCore`
+7. `JellyPresentation`, `JellyPresentationTV`
 
 Rules:
 
-1. An arrow points from a module to a module it may import. No other import is
-   allowed.
+1. A module imports only modules from a lower step, and only those in its
+   "Imports" column. No other import is allowed.
 2. `JellyDomain` never imports SwiftUI, UIKit, AppKit, AVFoundation or
    Observation.
-3. `JellyData`, `JellyServices` and `JellyPlayback` never import SwiftUI.
+3. `JellyData`, `JellyServices`, `JellyPlayback`, `JellyMocks` and
+   `JellyComposition` never import SwiftUI.
 4. A Presentation module never imports `JellyData`. It sees services and
-   domain types only.
-5. `JellyPresentation` and `JellyPresentationTV` never import each other.
+   domain types only. `JellyComposition` exposes no `JellyData` type, so
+   importing it does not break this rule.
+5. A Presentation module uses `JellyMocks` only inside `#if DEBUG`, for
+   `#Preview`. All of `JellyMocks` is inside `#if DEBUG`, so a release build
+   that uses it outside `#if DEBUG` does not compile.
+6. `JellyPresentation` and `JellyPresentationTV` never import each other.
    Code that both need moves down to `JellyPresentationCore`, or to a
    non-view module if it is not view code.
-6. A new module needs an ADR (section 7).
+7. A new module needs an ADR (section 7).
+
+### 2.3.1 Platform guards
+
+SwiftPM cannot limit a target to some platforms. `swift build` and
+`swift test` on a Mac compile every target for macOS. So:
+
+- Each file in `JellyPresentation` starts with `#if os(iOS) || os(macOS)` and
+  ends with `#endif`. (`os(iOS)` includes iPadOS.)
+- Each file in `JellyPresentationTV` starts with `#if os(tvOS)` and ends with
+  `#endif`.
+- The app targets link each module only on its platforms, with
+  `.when(platforms:)` in the package and the target's platform filters in
+  Xcode.
 
 ### 2.4 What goes where
 
@@ -118,6 +138,7 @@ The rules in `docs/templates/README.md` apply, with these changes:
 | --- | --- | --- |
 | 2. Layers: Domain, Data, Services, Presentation | Each layer is a module (section 2.2), so the compiler enforces the layers | The user requires that all non-view code is in its own module |
 | 24. `Mock*` lives in the app target | `Mock*` lives in `JellyMocks`, inside `#if DEBUG` | The app target holds no non-view code |
+| 23. The `@Entry` default is the real service, built by `AppDependencies` | The `@Entry` keys live in `JellyPresentationCore`. The default calls a factory in `JellyComposition` | The environment key file is SwiftUI code, so it cannot live in `JellyComposition`. The factory returns a service, so no `JellyData` type reaches a Presentation module |
 | 25. Mocks are substituted under `#if TESTING` | The app target reads the launch argument `-ui-test-fixture <name>` inside `#if DEBUG` and passes the fixture name to `JellyComposition` | SwiftPM can only make a setting depend on the `debug` or `release` configuration. A custom `TESTING` condition set in Xcode does not reach package targets. SwiftPM defines `DEBUG` for debug builds, so `#if DEBUG` works in every module |
 
 ---
@@ -321,5 +342,8 @@ set the old one's Status to "Superseded by NNNN".
 
 ## 8. Deliberate constraints
 
-Each exception to a code rule is listed here, with its reason. There are none
-yet.
+Each exception to a code rule is listed here, with its reason.
+
+| Exception | Where | Reason |
+| --- | --- | --- |
+| File-level `#if os(...)` around every Presentation file | `JellyPresentation`, `JellyPresentationTV` | SwiftPM cannot limit a target to some platforms (section 2.3.1) |
