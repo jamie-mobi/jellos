@@ -28,6 +28,7 @@ public enum AppDependencies {
         let library: any LibraryRepositoryProtocol
         let sidebarStore: any SidebarStoreProtocol
         let playback: any PlaybackRepositoryProtocol
+        let home: any HomeRepositoryProtocol
     }
 
     // MARK: - Graph
@@ -49,7 +50,8 @@ public enum AppDependencies {
             ),
             library: LibraryRepository(urlSession: urlSession, identity: identity),
             sidebarStore: UserDefaultsSidebarStore(suiteName: nil),
-            playback: PlaybackRepository(urlSession: urlSession, identity: identity)
+            playback: PlaybackRepository(urlSession: urlSession, identity: identity),
+            home: HomeRepository(urlSession: urlSession, identity: identity)
         ))
     }
 
@@ -73,7 +75,8 @@ public enum AppDependencies {
             auth: MockAuthRepository(tokenStore: tokenStore, sessionStore: sessionStore, serverStore: serverStore),
             library: MockLibraryRepository(),
             sidebarStore: UserDefaultsSidebarStore(suiteName: UITestFixture.suiteName),
-            playback: MockPlaybackRepository()
+            playback: MockPlaybackRepository(),
+            home: MockHomeRepository(withArt: fixture.homeHasArt)
         ))
     }
 
@@ -117,7 +120,8 @@ public enum AppDependencies {
             userPickerService: UserPickerService(repository: repositories.auth),
             signInService: SignInService(repository: repositories.auth),
             sidebarService: SidebarService(repository: repositories.library, store: repositories.sidebarStore),
-            playbackService: PlaybackService(repository: repositories.playback)
+            playbackService: PlaybackService(repository: repositories.playback),
+            homeService: HomeService(repository: repositories.home)
         )
     }
 

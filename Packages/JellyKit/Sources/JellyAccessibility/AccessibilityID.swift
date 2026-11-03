@@ -72,6 +72,18 @@ public enum AccessibilityID {
         }
     }
 
+    // MARK: - Home
+
+    public enum Home {
+        public static let hero = "home.hero"
+        public static let heroTitle = "home.hero.title"
+        public static let heroMetadata = "home.hero.metadata"
+        public static let heroRating = "home.hero.rating"
+        public static let heroOverview = "home.hero.overview"
+        public static let heroPrimaryButton = "home.hero.primaryButton"
+        public static let heroFavoriteButton = "home.hero.favoriteButton"
+    }
+
     // MARK: - Player
 
     public enum Player {

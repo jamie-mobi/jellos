@@ -11,6 +11,7 @@ public enum UITestFixture: String, Sendable {
     case connectUnreachable = "connect-unreachable"
     case users
     case signedIn = "signed-in"
+    case signedInNoArt = "signed-in-no-art"
 
     // MARK: - Launch arguments
 
@@ -37,7 +38,8 @@ public enum UITestFixture: String, Sendable {
         switch self {
         case .connectSuccess,
              .users,
-             .signedIn:
+             .signedIn,
+             .signedInNoArt:
             .answer(id: "fixture-server", name: "Fixture Server", version: "10.11.0")
         case .connectUnreachable:
             .fail(.network)
@@ -50,7 +52,8 @@ public enum UITestFixture: String, Sendable {
              .connectUnreachable:
             false
         case .users,
-             .signedIn:
+             .signedIn,
+             .signedInNoArt:
             true
         }
     }
@@ -61,9 +64,14 @@ public enum UITestFixture: String, Sendable {
              .connectUnreachable,
              .users:
             false
-        case .signedIn:
+        case .signedIn,
+             .signedInNoArt:
             true
         }
+    }
+
+    public var homeHasArt: Bool {
+        self != .signedInNoArt
     }
 }
 #endif
