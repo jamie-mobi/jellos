@@ -1,0 +1,744 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4F56ABE12B332E11F28F0C32 /* JellyPresentation in Frameworks */ = {isa = PBXBuildFile; productRef = A99A1057BF0BF98F9571F060 /* JellyPresentation */; };
+		7D18B28ABD14599550C7BBC2 /* JellyComposition in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1ECF342D8D97929B6EE4EE /* JellyComposition */; };
+		82CAAE7EB86B691E3EC577D6 /* JellyPresentationTV in Frameworks */ = {isa = PBXBuildFile; productRef = 13C0F2DCC2ECF65C13818887 /* JellyPresentationTV */; };
+		B5010FF18B35A2CE3418FC98 /* ConnectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1387155F32D175F9EBD746 /* ConnectUITests.swift */; };
+		B6EAF6B6C60E3315905086B0 /* JellyAccessibility in Frameworks */ = {isa = PBXBuildFile; productRef = 0DFFC34CBFA57ECC6532321D /* JellyAccessibility */; };
+		C3BE27187A1820D926622488 /* JellyComposition in Frameworks */ = {isa = PBXBuildFile; productRef = 2C9DECB2A5005418C7FF9232 /* JellyComposition */; };
+		C85475AD9F275CBCAFDFE15B /* XCUIApplication+Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0BAEA49B6ED3BE81D3016F /* XCUIApplication+Fixture.swift */; };
+		CD2CE28C22A2292F3797985D /* JellyOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0908A8E35EB389ACEDBF81 /* JellyOSApp.swift */; };
+		D67150EFBBFBFB2B321E0B9A /* TVRootUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11679931F19B7060475F838 /* TVRootUITests.swift */; };
+		D9AA25CE20CF781A28F29813 /* TVJellyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF145F3818FC4CB12C990DED /* TVJellyApp.swift */; };
+		E93B17495C86CA41FFCD6E19 /* JellyAccessibility in Frameworks */ = {isa = PBXBuildFile; productRef = A437F48A31D700A87E065C98 /* JellyAccessibility */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		73068FB4379A814E7887C6FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04AC7053B9185CF4FBE05B9F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7AFB5ABC76F7446FEC5084F8;
+			remoteInfo = tvJelly;
+		};
+		F85F9981A98AA80E9E1C190E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04AC7053B9185CF4FBE05B9F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FD52A19913CFDA5785BCB83;
+			remoteInfo = jellyOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D791DE712212A55F1C8871E /* jellyOSUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = jellyOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DBD82BEAA636F1676624851 /* jellyOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = jellyOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		11471D00C34E989358A7A807 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		18CABAD594ABCA827E73F45F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2B0908A8E35EB389ACEDBF81 /* JellyOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JellyOSApp.swift; sourceTree = "<group>"; };
+		2DA00938311424DC2369D39B /* tvJelly.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = tvJelly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E1387155F32D175F9EBD746 /* ConnectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectUITests.swift; sourceTree = "<group>"; };
+		5D0BAEA49B6ED3BE81D3016F /* XCUIApplication+Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Fixture.swift"; sourceTree = "<group>"; };
+		7C94B40FB7159D70ACCCA202 /* jellyOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jellyOS.entitlements; sourceTree = "<group>"; };
+		BF145F3818FC4CB12C990DED /* TVJellyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVJellyApp.swift; sourceTree = "<group>"; };
+		C4309A8E60C08A5D6A6ABECE /* tvJellyUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = tvJellyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D11679931F19B7060475F838 /* TVRootUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVRootUITests.swift; sourceTree = "<group>"; };
+		DCAA52B85058BA5EB2DBF891 /* JellyKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = JellyKit; path = Packages/JellyKit; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		50361060F2931B28BF75EF56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D18B28ABD14599550C7BBC2 /* JellyComposition in Frameworks */,
+				4F56ABE12B332E11F28F0C32 /* JellyPresentation in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E36651BEE55E8CFFC824D98 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E93B17495C86CA41FFCD6E19 /* JellyAccessibility in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		845D6976CDD8424CED0CC81A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6EAF6B6C60E3315905086B0 /* JellyAccessibility in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C5412402E45249B815FB26D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3BE27187A1820D926622488 /* JellyComposition in Frameworks */,
+				82CAAE7EB86B691E3EC577D6 /* JellyPresentationTV in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1AB5CA41524267FCCA02D646 /* jellyOS */ = {
+			isa = PBXGroup;
+			children = (
+				11471D00C34E989358A7A807 /* Info.plist */,
+				7C94B40FB7159D70ACCCA202 /* jellyOS.entitlements */,
+				2B0908A8E35EB389ACEDBF81 /* JellyOSApp.swift */,
+			);
+			path = jellyOS;
+			sourceTree = "<group>";
+		};
+		1BBACEB91423206CD3D403D1 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				5D0BAEA49B6ED3BE81D3016F /* XCUIApplication+Fixture.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		3599C79C8ACB8359675242BB /* jellyOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2E1387155F32D175F9EBD746 /* ConnectUITests.swift */,
+				1BBACEB91423206CD3D403D1 /* Support */,
+			);
+			path = jellyOSUITests;
+			sourceTree = "<group>";
+		};
+		3D50B0FC69A99EDB2D1C3525 /* tvJelly */ = {
+			isa = PBXGroup;
+			children = (
+				18CABAD594ABCA827E73F45F /* Info.plist */,
+				BF145F3818FC4CB12C990DED /* TVJellyApp.swift */,
+			);
+			path = tvJelly;
+			sourceTree = "<group>";
+		};
+		40769CF08A3439119E44159D /* tvJellyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D11679931F19B7060475F838 /* TVRootUITests.swift */,
+			);
+			path = tvJellyUITests;
+			sourceTree = "<group>";
+		};
+		44E8D18CBA2C9BF0BAC769E9 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				3599C79C8ACB8359675242BB /* jellyOSUITests */,
+				40769CF08A3439119E44159D /* tvJellyUITests */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		58A70034C24099B0C39B2A09 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				DCAA52B85058BA5EB2DBF891 /* JellyKit */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		AD79A99855935F643A6E8B45 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0DBD82BEAA636F1676624851 /* jellyOS.app */,
+				0D791DE712212A55F1C8871E /* jellyOSUITests.xctest */,
+				2DA00938311424DC2369D39B /* tvJelly.app */,
+				C4309A8E60C08A5D6A6ABECE /* tvJellyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B9450ADA980234515B63884D /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				1AB5CA41524267FCCA02D646 /* jellyOS */,
+				3D50B0FC69A99EDB2D1C3525 /* tvJelly */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		EC46EC7B0C2B2582C76398F9 = {
+			isa = PBXGroup;
+			children = (
+				B9450ADA980234515B63884D /* Apps */,
+				58A70034C24099B0C39B2A09 /* Packages */,
+				44E8D18CBA2C9BF0BAC769E9 /* UITests */,
+				AD79A99855935F643A6E8B45 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7AFB5ABC76F7446FEC5084F8 /* tvJelly */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B6F326664F041C51EC4ADC4 /* Build configuration list for PBXNativeTarget "tvJelly" */;
+			buildPhases = (
+				39987E81BA6D96EAD9DF5AC9 /* Sources */,
+				8C5412402E45249B815FB26D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tvJelly;
+			packageProductDependencies = (
+				2C9DECB2A5005418C7FF9232 /* JellyComposition */,
+				13C0F2DCC2ECF65C13818887 /* JellyPresentationTV */,
+			);
+			productName = tvJelly;
+			productReference = 2DA00938311424DC2369D39B /* tvJelly.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9FD52A19913CFDA5785BCB83 /* jellyOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA75883571B646D9693678B3 /* Build configuration list for PBXNativeTarget "jellyOS" */;
+			buildPhases = (
+				0B529B03685322217EA5EBD5 /* Sources */,
+				50361060F2931B28BF75EF56 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = jellyOS;
+			packageProductDependencies = (
+				3D1ECF342D8D97929B6EE4EE /* JellyComposition */,
+				A99A1057BF0BF98F9571F060 /* JellyPresentation */,
+			);
+			productName = jellyOS;
+			productReference = 0DBD82BEAA636F1676624851 /* jellyOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AE07A53CF6680F6B3C8590E9 /* tvJellyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9EDDDC3F21D1D8145238EE69 /* Build configuration list for PBXNativeTarget "tvJellyUITests" */;
+			buildPhases = (
+				34690A831AFB18D8FDCBE9C1 /* Sources */,
+				845D6976CDD8424CED0CC81A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				86681762922673A6D340999C /* PBXTargetDependency */,
+			);
+			name = tvJellyUITests;
+			packageProductDependencies = (
+				0DFFC34CBFA57ECC6532321D /* JellyAccessibility */,
+			);
+			productName = tvJellyUITests;
+			productReference = C4309A8E60C08A5D6A6ABECE /* tvJellyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		EA00BE08846CF1CDA35E0193 /* jellyOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 468FA2B649128093944D692F /* Build configuration list for PBXNativeTarget "jellyOSUITests" */;
+			buildPhases = (
+				5873633FBDD2EEDC11ADCD2E /* Sources */,
+				7E36651BEE55E8CFFC824D98 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CA7959BA042D69E5E6A673A0 /* PBXTargetDependency */,
+			);
+			name = jellyOSUITests;
+			packageProductDependencies = (
+				A437F48A31D700A87E065C98 /* JellyAccessibility */,
+			);
+			productName = jellyOSUITests;
+			productReference = 0D791DE712212A55F1C8871E /* jellyOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04AC7053B9185CF4FBE05B9F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					7AFB5ABC76F7446FEC5084F8 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					9FD52A19913CFDA5785BCB83 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					AE07A53CF6680F6B3C8590E9 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7AFB5ABC76F7446FEC5084F8;
+					};
+					EA00BE08846CF1CDA35E0193 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9FD52A19913CFDA5785BCB83;
+					};
+				};
+			};
+			buildConfigurationList = 947D50CD49A1EEFEC5D4EE40 /* Build configuration list for PBXProject "jellyOS" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = EC46EC7B0C2B2582C76398F9;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A2C37FE4D1839EE475F2838B /* XCLocalSwiftPackageReference "Packages/JellyKit" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = AD79A99855935F643A6E8B45 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9FD52A19913CFDA5785BCB83 /* jellyOS */,
+				7AFB5ABC76F7446FEC5084F8 /* tvJelly */,
+				EA00BE08846CF1CDA35E0193 /* jellyOSUITests */,
+				AE07A53CF6680F6B3C8590E9 /* tvJellyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0B529B03685322217EA5EBD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD2CE28C22A2292F3797985D /* JellyOSApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34690A831AFB18D8FDCBE9C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D67150EFBBFBFB2B321E0B9A /* TVRootUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39987E81BA6D96EAD9DF5AC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9AA25CE20CF781A28F29813 /* TVJellyApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5873633FBDD2EEDC11ADCD2E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5010FF18B35A2CE3418FC98 /* ConnectUITests.swift in Sources */,
+				C85475AD9F275CBCAFDFE15B /* XCUIApplication+Fixture.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		86681762922673A6D340999C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7AFB5ABC76F7446FEC5084F8 /* tvJelly */;
+			targetProxy = 73068FB4379A814E7887C6FC /* PBXContainerItemProxy */;
+		};
+		CA7959BA042D69E5E6A673A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9FD52A19913CFDA5785BCB83 /* jellyOS */;
+			targetProxy = F85F9981A98AA80E9E1C190E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0A9A4583C3760797783C2ADC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.jamie.tvJellyUITests;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_TARGET_NAME = tvJelly;
+			};
+			name = Release;
+		};
+		13B4AE31A49DA0AC3AF9E0BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.jamie.jellyOSUITests;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = jellyOS;
+			};
+			name = Release;
+		};
+		3DB1795D3344A0EFD749939A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Apps/jellyOS/jellyOS.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Apps/jellyOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.jamie.jellyOS;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		414A8F0155596BB3C4EFFC66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TVOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Release;
+		};
+		4C504F29FCE4890E0A481363 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.jamie.tvJellyUITests;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_TARGET_NAME = tvJelly;
+			};
+			name = Debug;
+		};
+		4F752E2BBD205841683C359C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.jamie.jellyOSUITests;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = jellyOS;
+			};
+			name = Debug;
+		};
+		616B0B8392C411AF16184B81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = Apps/tvJelly/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.jamie.tvJelly;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Debug;
+		};
+		6A1D7AADAE885E074D951E35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = Apps/tvJelly/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.jamie.tvJelly;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Release;
+		};
+		8674B61B5C98F6F78E699BF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Apps/jellyOS/jellyOS.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Apps/jellyOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.jamie.jellyOS;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C25090918AF7361E279AEC8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TVOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		468FA2B649128093944D692F /* Build configuration list for PBXNativeTarget "jellyOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F752E2BBD205841683C359C /* Debug */,
+				13B4AE31A49DA0AC3AF9E0BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8B6F326664F041C51EC4ADC4 /* Build configuration list for PBXNativeTarget "tvJelly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				616B0B8392C411AF16184B81 /* Debug */,
+				6A1D7AADAE885E074D951E35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		947D50CD49A1EEFEC5D4EE40 /* Build configuration list for PBXProject "jellyOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C25090918AF7361E279AEC8A /* Debug */,
+				414A8F0155596BB3C4EFFC66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9EDDDC3F21D1D8145238EE69 /* Build configuration list for PBXNativeTarget "tvJellyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C504F29FCE4890E0A481363 /* Debug */,
+				0A9A4583C3760797783C2ADC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		BA75883571B646D9693678B3 /* Build configuration list for PBXNativeTarget "jellyOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DB1795D3344A0EFD749939A /* Debug */,
+				8674B61B5C98F6F78E699BF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A2C37FE4D1839EE475F2838B /* XCLocalSwiftPackageReference "Packages/JellyKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/JellyKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0DFFC34CBFA57ECC6532321D /* JellyAccessibility */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JellyAccessibility;
+		};
+		13C0F2DCC2ECF65C13818887 /* JellyPresentationTV */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JellyPresentationTV;
+		};
+		2C9DECB2A5005418C7FF9232 /* JellyComposition */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JellyComposition;
+		};
+		3D1ECF342D8D97929B6EE4EE /* JellyComposition */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JellyComposition;
+		};
+		A437F48A31D700A87E065C98 /* JellyAccessibility */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JellyAccessibility;
+		};
+		A99A1057BF0BF98F9571F060 /* JellyPresentation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JellyPresentation;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 04AC7053B9185CF4FBE05B9F /* Project object */;
+}

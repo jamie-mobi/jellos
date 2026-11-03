@@ -54,7 +54,7 @@ xcodebuild test -scheme jellyOS \
   -only-testing:jellyOSUITests/HomeUITests/test_ATV001_primaryButtonReadsResume
 ```
 
-- You may run all unit tests: `swift test --package-path Packages/JellyKit`.
+- You may run all unit tests: `xcrun swift test --package-path Packages/JellyKit`.
 
 ### Modules
 
@@ -68,6 +68,8 @@ xcodebuild test -scheme jellyOS \
 
 - Xcode 26, Swift 6 language mode, complete strict concurrency.
 - Deployment target 26 on all platforms: iOS, iPadOS, macOS, tvOS.
+- `jellyOS.xcodeproj` is generated: edit `project.yml`, then run
+  `xcodegen generate`. Commit both.
 - No fastlane. CI is `.github/workflows/lint.yml` and
   `.github/workflows/build.yml` (`docs/ENGINEERING.md` section 4.4).
 - Run `swiftformat . --lint --config .swiftformat` and
