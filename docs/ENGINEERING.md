@@ -248,9 +248,11 @@ no-image variants (template rule 22). Previews use `JellyMocks`.
 | `tracking` | The master task list |
 | `M1-home`, `M2-details`, `M3-discover`, `M4-polish` | The story milestone |
 | `tvOS` | Work for `JellyPresentationTV` |
+| `main-backlog` | A story from `docs/STORIES.md` that an ATV story depends on |
 
 GitHub milestones `M1 Home`, `M2 Details`, `M3 Discover` and `M4 Polish` hold
-the story issues.
+the ATV story issues. Milestones `Main M1 Browse`, `Main M2 Watch` and
+`Main M3 Find` hold the `main-backlog` story issues.
 
 ### 5.2 The master task list
 
