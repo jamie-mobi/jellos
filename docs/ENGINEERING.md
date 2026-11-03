@@ -194,8 +194,8 @@ Then clean up. Repeat for each acceptance item.
   `JellyCompositionTests`. Live server tests are in `JellyIntegrationTests`
   (section 4.5).
 - A test target is added with the first logic in its module. Today:
-  `JellyDomainTests`, `JellyDataTests`, `JellyServicesTests` and
-  `JellyIntegrationTests`.
+  `JellyDomainTests`, `JellyDataTests`, `JellyServicesTests`,
+  `JellyCompositionTests` and `JellyIntegrationTests`.
 - Use `xcrun swift`, not the `swift` on your `PATH`. The `PATH` copy can be
   an older toolchain that cannot read `swift-tools-version: 6.2`.
 - Unit tests are fast. You may run all of them:

@@ -112,6 +112,10 @@ public final class ConnectService {
         }
 
         await repository.save(server)
+        guard Task.isCancelled == false else {
+            return
+        }
+
         connectedServer = server
         isConnecting = false
     }

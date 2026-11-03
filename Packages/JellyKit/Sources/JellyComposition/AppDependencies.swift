@@ -52,14 +52,17 @@ public enum AppDependencies {
     }
 
     private static func makeServerRepository() -> any ServerRepositoryProtocol {
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = requestTimeout
-
-        return ServerRepository(
-            urlSession: URLSession(configuration: configuration),
+        ServerRepository(
+            urlSession: URLSession(configuration: makeSessionConfiguration()),
             identity: makeClientIdentity(),
             store: UserDefaultsServerStore(suiteName: nil)
         )
+    }
+
+    static func makeSessionConfiguration() -> URLSessionConfiguration {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = requestTimeout
+        return configuration
     }
 
     private static func makeClientIdentity() -> ClientIdentity {

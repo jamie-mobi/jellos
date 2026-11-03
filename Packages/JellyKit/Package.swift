@@ -43,6 +43,7 @@ let package = Package(
         .testTarget(name: "JellyDomainTests", dependencies: ["JellyDomain"]),
         .testTarget(name: "JellyDataTests", dependencies: ["JellyDomain", "JellyData"]),
         .testTarget(name: "JellyServicesTests", dependencies: ["JellyDomain", "JellyData", "JellyServices"]),
+        .testTarget(name: "JellyCompositionTests", dependencies: ["JellyComposition", "JellyMocks"]),
         .testTarget(name: "JellyIntegrationTests", dependencies: ["JellyDomain", "JellyData"])
     ]
 )
