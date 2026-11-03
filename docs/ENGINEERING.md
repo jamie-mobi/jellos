@@ -233,7 +233,7 @@ the story issues.
 
 ### 5.2 The master task list
 
-The master task list is the pinned GitHub issue with the `tracking` label,
+The master task list is the pinned GitHub issue #45 with the `tracking` label,
 titled "Master task list". It is the only task list. Do not copy it into the
 repository.
 
