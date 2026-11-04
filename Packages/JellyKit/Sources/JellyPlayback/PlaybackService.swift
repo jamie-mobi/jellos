@@ -63,6 +63,14 @@ public final class PlaybackService {
         state = .playing(source)
     }
 
+    public func play(itemID: String, resumeTicks: Int, choice: StartChoice, session: Session) async {
+        await play(
+            itemID: itemID,
+            startTicks: StartPositionUseCase.startTicks(for: choice, resumeTicks: resumeTicks),
+            session: session
+        )
+    }
+
     public func stop() {
         player?.pause()
         player = nil

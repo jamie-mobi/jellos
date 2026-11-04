@@ -85,7 +85,7 @@ struct HomeScreen: View {
 
     private func offerStart(_ hero: FeaturedHero) {
         guard StartPositionUseCase.offersChoice(resumeTicks: hero.resumeTicks) else {
-            play(hero, startTicks: 0)
+            start(hero, choice: .startOver)
             return
         }
 
@@ -94,16 +94,12 @@ struct HomeScreen: View {
 
     private func start(_ hero: FeaturedHero, choice: StartChoice) {
         resumeHero = nil
-        play(hero, startTicks: StartPositionUseCase.startTicks(for: choice, resumeTicks: hero.resumeTicks))
-    }
-
-    private func play(_ hero: FeaturedHero, startTicks: Int) {
         Task {
             guard let itemID = await home.playableItemID(for: hero, session: session) else {
                 return
             }
 
-            await playback.play(itemID: itemID, startTicks: startTicks, session: session)
+            await playback.play(itemID: itemID, resumeTicks: hero.resumeTicks, choice: choice, session: session)
         }
     }
 

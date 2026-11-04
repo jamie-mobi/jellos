@@ -49,6 +49,17 @@ struct PlaybackServiceTests {
         #expect(await repository.requests.map(\.startTicks) == [42])
     }
 
+    @Test(arguments: [(StartChoice.resume, 12_000_000_000), (StartChoice.startOver, 0)])
+    func `Resume plays from the saved position and Start Over from the beginning`(choice: StartChoice, expected: Int) async {
+        let repository = StubPlaybackRepository(result: .success(Self.source))
+        let sut = await PlaybackService(repository: repository)
+
+        await sut.play(itemID: "item-1", resumeTicks: 12_000_000_000, choice: choice, session: Self.session)
+
+        #expect(await repository.requests.map(\.startTicks) == [expected])
+        #expect(await sut.state == .playing(Self.source))
+    }
+
     @Test
     func `a refused item ends failed with no player`() async {
         let sut = await PlaybackService(repository: StubPlaybackRepository(result: .failure(.refused)))
