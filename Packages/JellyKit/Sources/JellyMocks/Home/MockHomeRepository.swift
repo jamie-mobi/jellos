@@ -16,7 +16,7 @@ public struct MockHomeRepository: HomeRepositoryProtocol {
 
     private static let backdrop = URL(string: "http://fixture.local:8096/Items/series-1/Images/Backdrop/0")
 
-    public static func nextUp(withArt: Bool) -> [MediaItem] {
+    public static func nextUp(withArt: Bool, resumeTicks: Int = 0) -> [MediaItem] {
         [
             MediaItem(
                 id: "fixture-episode",
@@ -30,7 +30,7 @@ public struct MockHomeRepository: HomeRepositoryProtocol {
                 seriesName: "Driftwood Bay",
                 seasonNumber: 2,
                 episodeNumber: 3,
-                resumeTicks: 0,
+                resumeTicks: resumeTicks,
                 isFavorite: false,
                 backdropURL: withArt ? backdrop : nil,
                 logoURL: nil
@@ -62,17 +62,19 @@ public struct MockHomeRepository: HomeRepositoryProtocol {
     // MARK: - Input
 
     private let withArt: Bool
+    private let nextUpResumeTicks: Int
 
     // MARK: - Init
 
-    public init(withArt: Bool = true) {
+    public init(withArt: Bool = true, nextUpResumeTicks: Int = 0) {
         self.withArt = withArt
+        self.nextUpResumeTicks = nextUpResumeTicks
     }
 
     // MARK: - HomeRepositoryProtocol
 
     public func nextUp(session: Session) async throws(HomeError) -> [MediaItem] {
-        Self.nextUp(withArt: withArt)
+        Self.nextUp(withArt: withArt, resumeTicks: nextUpResumeTicks)
     }
 
     public func latest(session: Session) async throws(HomeError) -> [MediaItem] {

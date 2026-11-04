@@ -12,6 +12,7 @@ public enum UITestFixture: String, Sendable {
     case users
     case signedIn = "signed-in"
     case signedInNoArt = "signed-in-no-art"
+    case signedInResume = "signed-in-resume"
 
     // MARK: - Launch arguments
 
@@ -19,6 +20,10 @@ public enum UITestFixture: String, Sendable {
     public static let resetArgument = "-ui-test-reset"
     public static let suiteName = "mobi.jamie.jellyOS.uitests"
     public static let keychainService = "mobi.jamie.jellyOS.uitests"
+
+    // MARK: - Constants
+
+    private static let savedPositionTicks = 12_000_000_000
 
     // MARK: - Init
 
@@ -39,7 +44,8 @@ public enum UITestFixture: String, Sendable {
         case .connectSuccess,
              .users,
              .signedIn,
-             .signedInNoArt:
+             .signedInNoArt,
+             .signedInResume:
             .answer(id: "fixture-server", name: "Fixture Server", version: "10.11.0")
         case .connectUnreachable:
             .fail(.network)
@@ -53,7 +59,8 @@ public enum UITestFixture: String, Sendable {
             false
         case .users,
              .signedIn,
-             .signedInNoArt:
+             .signedInNoArt,
+             .signedInResume:
             true
         }
     }
@@ -65,13 +72,27 @@ public enum UITestFixture: String, Sendable {
              .users:
             false
         case .signedIn,
-             .signedInNoArt:
+             .signedInNoArt,
+             .signedInResume:
             true
         }
     }
 
     public var homeHasArt: Bool {
         self != .signedInNoArt
+    }
+
+    public var homeResumeTicks: Int {
+        switch self {
+        case .connectSuccess,
+             .connectUnreachable,
+             .users,
+             .signedIn,
+             .signedInNoArt:
+            0
+        case .signedInResume:
+            Self.savedPositionTicks
+        }
     }
 }
 #endif
