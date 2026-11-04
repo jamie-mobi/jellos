@@ -22,6 +22,11 @@ struct HomeScreen: View {
     @Environment(\.playbackService)
     private var playback
 
+    // MARK: - State
+
+    @State
+    private var resumeHero: FeaturedHero?
+
     // MARK: - Input
 
     let session: Session
@@ -39,6 +44,13 @@ struct HomeScreen: View {
         .navigationTitle(String(localized: "Home", bundle: .module))
         .task(id: session.user.id) {
             await home.start(session: session)
+        }
+        .sheet(item: $resumeHero) { hero in
+            ResumeSheet(
+                title: hero.title,
+                onChoose: { choice in start(hero, choice: choice) },
+                onCancel: { resumeHero = nil }
+            )
         }
     }
 
@@ -64,20 +76,34 @@ struct HomeScreen: View {
             position: 1,
             count: count,
             isFavorite: home.isFavorite(itemID: hero.favoriteItemID, default: hero.isFavorite),
-            onPlay: { play(hero) },
+            onPlay: { offerStart(hero) },
             onToggleFavorite: { toggleFavorite(hero) }
         )
     }
 
     // MARK: - Helpers
 
-    private func play(_ hero: FeaturedHero) {
+    private func offerStart(_ hero: FeaturedHero) {
+        guard StartPositionUseCase.offersChoice(resumeTicks: hero.resumeTicks) else {
+            play(hero, startTicks: 0)
+            return
+        }
+
+        resumeHero = hero
+    }
+
+    private func start(_ hero: FeaturedHero, choice: StartChoice) {
+        resumeHero = nil
+        play(hero, startTicks: StartPositionUseCase.startTicks(for: choice, resumeTicks: hero.resumeTicks))
+    }
+
+    private func play(_ hero: FeaturedHero, startTicks: Int) {
         Task {
             guard let itemID = await home.playableItemID(for: hero, session: session) else {
                 return
             }
 
-            await playback.play(itemID: itemID, startTicks: hero.resumeTicks, session: session)
+            await playback.play(itemID: itemID, startTicks: startTicks, session: session)
         }
     }
 

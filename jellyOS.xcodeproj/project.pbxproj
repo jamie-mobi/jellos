@@ -10,6 +10,7 @@
 		15B549252191A91D7FCFA169 /* UserPickerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA25EC0C116E11EFD36517E /* UserPickerUITests.swift */; };
 		2A33FBE07D38905F74329C28 /* HomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1759A3B71932BC334CE3D8C0 /* HomeUITests.swift */; };
 		4F56ABE12B332E11F28F0C32 /* JellyPresentation in Frameworks */ = {isa = PBXBuildFile; productRef = A99A1057BF0BF98F9571F060 /* JellyPresentation */; };
+		5F6D70B08B380F90FBCF9797 /* PlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE83CD3CAEAC8351A5C4114 /* PlayerUITests.swift */; };
 		7D18B28ABD14599550C7BBC2 /* JellyComposition in Frameworks */ = {isa = PBXBuildFile; productRef = 3D1ECF342D8D97929B6EE4EE /* JellyComposition */; };
 		82CAAE7EB86B691E3EC577D6 /* JellyPresentationTV in Frameworks */ = {isa = PBXBuildFile; productRef = 13C0F2DCC2ECF65C13818887 /* JellyPresentationTV */; };
 		B5010FF18B35A2CE3418FC98 /* ConnectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1387155F32D175F9EBD746 /* ConnectUITests.swift */; };
@@ -51,6 +52,7 @@
 		2DA00938311424DC2369D39B /* tvJelly.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = tvJelly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E1387155F32D175F9EBD746 /* ConnectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectUITests.swift; sourceTree = "<group>"; };
 		5D0BAEA49B6ED3BE81D3016F /* XCUIApplication+Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Fixture.swift"; sourceTree = "<group>"; };
+		5EE83CD3CAEAC8351A5C4114 /* PlayerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerUITests.swift; sourceTree = "<group>"; };
 		7C94B40FB7159D70ACCCA202 /* jellyOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jellyOS.entitlements; sourceTree = "<group>"; };
 		87C2AF1BC31698615CADC993 /* SidebarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarUITests.swift; sourceTree = "<group>"; };
 		BF145F3818FC4CB12C990DED /* TVJellyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVJellyApp.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			children = (
 				2E1387155F32D175F9EBD746 /* ConnectUITests.swift */,
 				1759A3B71932BC334CE3D8C0 /* HomeUITests.swift */,
+				5EE83CD3CAEAC8351A5C4114 /* PlayerUITests.swift */,
 				87C2AF1BC31698615CADC993 /* SidebarUITests.swift */,
 				1AA25EC0C116E11EFD36517E /* UserPickerUITests.swift */,
 				1BBACEB91423206CD3D403D1 /* Support */,
@@ -359,6 +362,7 @@
 			files = (
 				B5010FF18B35A2CE3418FC98 /* ConnectUITests.swift in Sources */,
 				2A33FBE07D38905F74329C28 /* HomeUITests.swift in Sources */,
+				5F6D70B08B380F90FBCF9797 /* PlayerUITests.swift in Sources */,
 				D491697DE21E80E563F3494C /* SidebarUITests.swift in Sources */,
 				15B549252191A91D7FCFA169 /* UserPickerUITests.swift in Sources */,
 				C85475AD9F275CBCAFDFE15B /* XCUIApplication+Fixture.swift in Sources */,
