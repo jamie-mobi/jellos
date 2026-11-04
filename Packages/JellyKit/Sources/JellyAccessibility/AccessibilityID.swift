@@ -89,6 +89,10 @@ public enum AccessibilityID {
     public enum Player {
         public static let view = "player.view"
         public static let close = "player.close"
+        public static let resumeSheet = "player.resumeSheet"
+        public static let resumeButton = "player.resumeSheet.resumeButton"
+        public static let startOverButton = "player.resumeSheet.startOverButton"
+        public static let cancelButton = "player.resumeSheet.cancelButton"
     }
 
     // MARK: - tvOS root

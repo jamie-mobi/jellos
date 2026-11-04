@@ -76,7 +76,7 @@ public enum AppDependencies {
             library: MockLibraryRepository(),
             sidebarStore: UserDefaultsSidebarStore(suiteName: UITestFixture.suiteName),
             playback: MockPlaybackRepository(),
-            home: MockHomeRepository(withArt: fixture.homeHasArt)
+            home: MockHomeRepository(withArt: fixture.homeHasArt, nextUpResumeTicks: fixture.homeResumeTicks)
         ))
     }
 

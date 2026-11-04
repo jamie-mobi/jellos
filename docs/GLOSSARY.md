@@ -17,6 +17,7 @@ One name per thing. UI text, code comments, docs, and errors use these words onl
 | Movie / Series / Season / Episode | The item types | show (use Series), film |
 | Shelf | A horizontal row of items on Home or a detail page | row, rail, carousel |
 | Continue Watching | Items with a saved position | resume, in progress |
+| Resume / Start Over | Play an item from its saved position, or from the beginning | continue, restart, play from beginning |
 | Next Up | The next unplayed episode of each series being watched | up next, queue |
 | Latest | Items added most recently to a library | recently added, new |
 | Favorites | Items the user marked with the heart | likes, starred |

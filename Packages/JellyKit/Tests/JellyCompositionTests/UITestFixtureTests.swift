@@ -14,7 +14,8 @@ struct UITestFixtureTests {
 
         arguments: [
             (["-ui-test-fixture", "connect-success"], UITestFixture.connectSuccess),
-            (["App", "-ui-test-reset", "-ui-test-fixture", "connect-unreachable"], UITestFixture.connectUnreachable)
+            (["App", "-ui-test-reset", "-ui-test-fixture", "connect-unreachable"], UITestFixture.connectUnreachable),
+            (["-ui-test-fixture", "signed-in-resume"], UITestFixture.signedInResume)
         ]
     )
     func `reads the fixture named after the launch argument`(arguments: [String], expected: UITestFixture) {
@@ -32,5 +33,13 @@ struct UITestFixtureTests {
     )
     func `gives no fixture when the argument is missing, has no value, or names no fixture`(arguments: [String]) {
         #expect(UITestFixture(arguments: arguments) == nil)
+    }
+
+    @Test
+    func `only the resume fixture signs in with a saved position on Home`() {
+        #expect(UITestFixture.signedInResume.seedsSession)
+        #expect(UITestFixture.signedInResume.homeResumeTicks > 0)
+        #expect(UITestFixture.signedIn.homeResumeTicks == 0)
+        #expect(UITestFixture.signedInNoArt.homeResumeTicks == 0)
     }
 }

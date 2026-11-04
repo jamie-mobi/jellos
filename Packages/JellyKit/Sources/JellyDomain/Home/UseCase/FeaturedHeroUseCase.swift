@@ -17,6 +17,7 @@ public enum FeaturedHeroUseCase {
         let isEpisode = item.kind == .episode
 
         return FeaturedHero(
+            id: item.id,
             title: isEpisode ? item.seriesName ?? item.name : item.name,
             kind: isEpisode ? .series : item.kind,
             genres: Array(item.genres.prefix(genreLimit)),
