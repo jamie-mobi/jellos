@@ -7,10 +7,11 @@
 
 import Foundation
 
-public struct FeaturedHero: Equatable, Sendable {
+public struct FeaturedHero: Identifiable, Equatable, Sendable {
 
     // MARK: - Stored
 
+    public let id: String
     public let title: String
     public let kind: MediaKind
     public let genres: [String]

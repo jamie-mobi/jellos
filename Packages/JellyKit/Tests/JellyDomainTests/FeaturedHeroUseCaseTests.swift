@@ -38,6 +38,14 @@ struct FeaturedHeroUseCaseTests {
         #expect(hero.action == .play)
     }
 
+    // MARK: - Identity
+
+    @Test
+    func `a hero is identified by the item it features`() {
+        #expect(FeaturedHeroUseCase.hero(for: MediaItemFixtures.episode("e1", seriesID: "s1")).id == "e1")
+        #expect(FeaturedHeroUseCase.hero(for: MediaItemFixtures.series("s1")).id == "s1")
+    }
+
     // MARK: - Text
 
     @Test
